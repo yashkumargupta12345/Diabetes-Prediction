@@ -9,11 +9,13 @@ Created on Fri Dec 26 22:00:19 2025
 import numpy as np
 import pickle
 import streamlit as st
+import os
 
 # loading the saved model
 model_path = os.path.join(os.path.dirname(__file__), "trained_model.sav")
 
-loaded_model = pickle.load(open(model_path, "rb"))
+with open(model_path, "rb") as f:
+    loaded_model = pickle.load(f)
 
 # creating a function for prediction
 def diabetes_prediction(input_data):
